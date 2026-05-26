@@ -1,1 +1,23 @@
+name: Security Scan
+on: [push, pull_request, workflow_dispatch]
 
+jobs:
+  scan-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install zizmor
+        run: pip install zizmor
+
+      - name: Run zizmor
+        run: zizmor .github/workflows/
+
+      - name: actionlint
+        if: always()
+        uses: raven-actions/actionlint@v2
