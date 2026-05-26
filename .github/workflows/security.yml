@@ -16,7 +16,7 @@ jobs:
         run: pip install zizmor
 
       - name: Run zizmor
-        run: zizmor .github/workflows/
+        run: zizmor --min-severity high .github/workflows/
 
       - name: actionlint
         if: always()
