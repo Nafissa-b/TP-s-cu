@@ -1,0 +1,14 @@
+name: Greeter (vulnerable)
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: |
+          echo "Nouvelle issue reçue !"
+          echo "Titre : ${{ github.event.issue.title }}"
+          echo "Auteur : ${{ github.event.issue.user.login }}"
